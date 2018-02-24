@@ -446,7 +446,9 @@ To run the image:
       spotify-ripper -d /data spotify:track:52xaypL0Kjzk0ngwv3oBPR
 
 In the above example:
+
 - Ripped files will be stored in host machine's ``~/Music`` folder, mapped to container's ``/data`` folder
+
 - Configuration & Spotify key will be read from ``~/.spotify-ripper``
 
 Optional Encoding Formats
