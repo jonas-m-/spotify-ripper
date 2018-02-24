@@ -424,6 +424,32 @@ Windows
 Unfortunately, pyspotify seems to have an issue building on Windows (if someone can get this to work, please let me know). The best alternative is to run a linux distribution in a virtual machine.  Basic instructions to install Ubuntu on Virtual Box can be found in the `wiki <https://github.com/hbashton-ripper/wiki/Windows>`__.
 
 
+Docker
+~~~~~~
+
+It's also possible to build & run spotify-ripper as a Docker container.
+
+To build the image:
+
+.. code:: bash
+
+    $ docker build -t spotify-ripper:latest .
+
+To run the image:
+
+.. code:: bash
+
+    $ docker run --rm \ # Run & remove container after it finishes
+      -it \ # Interactive mode
+      -v ~/Music:/data \ # Mount volume where ripped files are to be stored
+      -v ~/.spotify-ripper:/root/.spotify-ripper \ # Mount volume containing config.ini & spotify_appkey.key
+      spotify-ripper \ # Docker image name
+      spotify-ripper -d /data spotify:track:52xaypL0Kjzk0ngwv3oBPR # Command to be executed
+
+In the above example:
+- Ripped files will be stored in host machine's ``~/Music`` folder, mapped to container's ``/data`` folder
+- Configuration & Spotify key will be read from ``~/.spotify-ripper``
+
 Optional Encoding Formats
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
