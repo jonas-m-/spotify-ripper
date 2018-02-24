@@ -439,12 +439,11 @@ To run the image:
 
 .. code:: bash
 
-    $ docker run --rm \ # Run & remove container after it finishes
-      -it \ # Interactive mode
-      -v ~/Music:/data \ # Mount volume where ripped files are to be stored
-      -v ~/.spotify-ripper:/root/.spotify-ripper \ # Mount volume containing config.ini & spotify_appkey.key
-      spotify-ripper \ # Docker image name
-      spotify-ripper -d /data spotify:track:52xaypL0Kjzk0ngwv3oBPR # Command to be executed
+    $ docker run -it --rm \
+      -v ~/Music:/data \
+      -v ~/.spotify-ripper:/root/.spotify-ripper \
+      spotify-ripper:latest \
+      spotify-ripper -d /data spotify:track:52xaypL0Kjzk0ngwv3oBPR
 
 In the above example:
 - Ripped files will be stored in host machine's ``~/Music`` folder, mapped to container's ``/data`` folder
