@@ -3,7 +3,7 @@ FROM python:3.5-slim
 WORKDIR /tmp
 COPY . .
 
-RUN apt-add-repository multiverse \
+RUN echo 'deb http://deb.debian.org/debian jessie main non-free' > /etc/apt/sources.list \
     && apt-get -q update \
     && BUILD_PACKAGES='wget build-essential libffi-dev libfdk-aac-dev automake autoconf' \
     && apt-get install -qy --force-yes $BUILD_PACKAGES lame flac faac libav-tools vorbis-tools opus-tools \
