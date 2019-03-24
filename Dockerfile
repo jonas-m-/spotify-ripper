@@ -1,9 +1,9 @@
-FROM python:3.5-slim
+FROM python:3.7-slim-stretch
 
 WORKDIR /tmp
 COPY . .
 
-RUN echo 'deb http://deb.debian.org/debian jessie main non-free' > /etc/apt/sources.list \
+RUN echo 'deb http://deb.debian.org/debian stretch main non-free' > /etc/apt/sources.list \
     && apt-get -q update \
     && BUILD_PACKAGES='wget build-essential libffi-dev libfdk-aac-dev automake autoconf' \
     && apt-get install -qy --force-yes $BUILD_PACKAGES lame flac faac libav-tools vorbis-tools opus-tools \
@@ -15,7 +15,7 @@ RUN echo 'deb http://deb.debian.org/debian jessie main non-free' > /etc/apt/sour
         && make install \
         && cd .. \
     && ARCHIVE=libspotify-12.1.51-Linux-$(uname -m)-release \
-    && wget https://developer.spotify.com/download/libspotify/${ARCHIVE}.tar.gz \
+    && wget -O ${ARCHIVE}.tar.gz https://github.com/mopidy/libspotify-archive/blob/master/${ARCHIVE}.tar.gz?raw=true \
         && tar xvf ${ARCHIVE}.tar.gz \
         && cd ${ARCHIVE}/ \
         && make install prefix=/usr/local \
