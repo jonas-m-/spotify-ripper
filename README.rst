@@ -443,7 +443,7 @@ To run the image:
       -v ~/Music:/data \
       -v ~/.spotify-ripper:/root/.spotify-ripper \
       spotify-ripper:latest \
-      spotify-ripper -d /data spotify:track:52xaypL0Kjzk0ngwv3oBPR
+      -d /data spotify:track:52xaypL0Kjzk0ngwv3oBPR
 
 In the above example:
 

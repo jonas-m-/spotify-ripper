@@ -29,4 +29,5 @@ RUN echo 'deb http://deb.debian.org/debian stretch main non-free' > /etc/apt/sou
 
 WORKDIR /data
 VOLUME ["/data"]
-CMD ["spotify-ripper"]
+ENTRYPOINT ["spotify-ripper"]
+CMD ["--help"]
